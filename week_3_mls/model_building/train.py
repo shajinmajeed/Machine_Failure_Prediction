@@ -5,6 +5,7 @@ from sklearn.compose import make_column_transformer
 from sklearn.pipeline import make_pipeline
 # for model training, tuning, and evaluation
 import xgboost as xgb
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import classification_report
 # for model serialization
@@ -41,8 +42,8 @@ xgb_model = xgb.XGBClassifier(scale_pos_weight=class_weight, random_state=42)
 # Small grid so the pipeline runs fast on GitHub Actions.
 # Widen this if you want a more thorough hyperparameter search.
 param_grid = {
-    "xgbclassifier__n_estimators": [50, 100],
-    "xgbclassifier__max_depth": [2, 3],
+    "xgbclassifier__n_estimators": [50, 110],
+    "xgbclassifier__max_depth": [2, 3,4],
     "xgbclassifier__learning_rate": [0.05, 0.1],
 }
 
